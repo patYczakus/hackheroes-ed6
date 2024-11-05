@@ -13,12 +13,8 @@
  */
 export const rubbishData = [
     {
-        //nazwa przedmiotu
         name: "Przetłuszczone pudełko po pizzy",
-        //typ śmiecia
-        //kategorie: "sztuczne", "zmieszane", "papier", "szkło" , "bio"
         type: "zmieszane",
-        //zdjęcie (url)
         img: "",
     },
     {
