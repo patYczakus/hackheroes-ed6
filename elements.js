@@ -1,4 +1,4 @@
-export const elemets = {
+export const elements = {
     minigameDiv: (() => {
         let element = document.createElement("div")
         element.id = "minigame"
