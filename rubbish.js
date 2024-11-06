@@ -3,7 +3,7 @@
 /**
  * @typedef {Object} RubbishFields
  * @property {string} name Nazwa śmiecia
- * @property {"zmieszane" | "papier" | "sztuczne" | "szkło" | "bio"} type Typ kosza, do którego śmieć powinien być wyrzucony
+ * @property {"zmieszane" | "papier" | "sztuczne" | "szkło" | "bio" | "elektro"} type Typ kosza, do którego śmieć powinien być wyrzucony
  * @property {string | URL} img Zdjęcie śmiecia
  * @property {Array<string | URL> | undefined} [variantImgs=undefined] Inne warianty zdjęć śmiecia (opcjonalnie)
  */
@@ -138,8 +138,8 @@ export const rubbishData = [
         img: "",
     },
     {
-        name: "Zużyta bateria",
-        type: "sztuczne",
+        name: "Trzy baterie",
+        type: "elektro",
         img: "",
     },
     {
@@ -155,4 +155,5 @@ export const rubbishCategoryFullname = {
     sztuczne: "Tworzywa sztuczne",
     szkło: "Szkło",
     bio: "Bio",
+    elektro: "Elektrośmieci"
 }
