@@ -15,138 +15,135 @@ export const rubbishData = [
     {
         name: "Przetłuszczone pudełko po pizzy",
         type: "zmieszane",
-        img: "",
+        img: "imgs/rubbish/pudlo_pizza.png",
     },
     {
         name: "Puszka po konserwie",
         type: "sztuczne",
-        img: "",
-    },
-    {
-        name: "Plastikowa butelka",
-        type: "sztuczne",
-        img: "",
-    },
-    {
-        name: "Szklana butelka",
-        type: "szkło",
-        img: "",
-    },
-    {
-        name: "Obierki od ziemniaków",
-        type: "bio",
-        img: "",
+        img: "imgs/rubbish/paprykarz_szczeciński.png",
     },
     {
         name: "Porwana ulotka",
         type: "papier",
-        img: "",
-    },
-    {
-        name: "Skórka od banana",
-        type: "bio",
-        img: "",
-    },
-    {
-        name: "Plastikowy kubek",
-        type: "sztuczne",
-        img: "",
-    },
-    {
-        name: "Metalowa puszka",
-        type: "sztuczne",
-        img: "",
-    },
-    {
-        name: "Tekturowe pudełko",
-        type: "papier",
-        img: "",
-    },
-    {
-        name: "Puszka po energetyku",
-        type: "sztuczne",
-        img: "",
-    },
-    {
-        name: "Butelka po soku",
-        type: "sztuczne",
-        img: "",
-    },
-    {
-        name: "Torebka foliowa",
-        type: "sztuczne",
-        img: "",
-    },
-    {
-        name: "Zgniłe jabłko",
-        type: "bio",
-        img: "",
-    },
-    {
-        name: "Karton po mleku",
-        type: "papier",
-        img: "",
-    },
-    {
-        name: "Plastikowa torba",
-        type: "sztuczne",
-        img: "",
-    },
-    {
-        name: "Rozbity słoik po dżemie",
-        type: "szkło",
-        img: "",
-    },
-    {
-        name: "Wiadro",
-        type: "sztuczne",
-        img: "",
-    },
-    {
-        name: "Stary but",
-        type: "zmieszane",
-        img: "",
-    },
-    {
-        name: "Stara gazeta",
-        type: "papier",
-        img: "",
-    },
-    {
-        name: "Plastikowy widelec",
-        type: "sztuczne",
-        img: "",
-    },
-    {
-        name: "Resztki jedzenia",
-        type: "bio",
-        img: "",
-    },
-    {
-        name: "Szklanka",
-        type: "szkło",
-        img: "",
-    },
-    {
-        name: "Metalowa łyżka",
-        type: "sztuczne",
-        img: "",
-    },
-    {
-        name: "Kawałek drewna",
-        type: "bio",
-        img: "",
+        img: "imgs/rubbish/ulotka.png",
+        variantImgs: ["imgs/rubbish/ulotka_v1.png"],
     },
     {
         name: "Trzy baterie",
         type: "elektro",
-        img: "",
+        img: "imgs/rubbish/bateria.png",
+        variantImgs: ["imgs/rubbish/bateria_v1.png", "imgs/rubbish/bateria_v2.png", "imgs/rubbish/bateria_v3.png"],
     },
-    {
-        name: "Karton po jajkach",
-        type: "papier",
-        img: "",
-    },
+    // {
+    //     name: "Plastikowa butelka",
+    //     type: "sztuczne",
+    //     img: "",
+    // },
+    // {
+    //     name: "Szklana butelka",
+    //     type: "szkło",
+    //     img: "",
+    // },
+    // {
+    //     name: "Obierki od ziemniaków",
+    //     type: "bio",
+    //     img: "",
+    // },
+    // {
+    //     name: "Skórka od banana",
+    //     type: "bio",
+    //     img: "",
+    // },
+    // {
+    //     name: "Plastikowy kubek",
+    //     type: "sztuczne",
+    //     img: "",
+    // },
+    // {
+    //     name: "Tekturowe pudełko",
+    //     type: "papier",
+    //     img: "",
+    // },
+    // {
+    //     name: "Puszka",
+    //     type: "sztuczne",
+    //     img: "",
+    // },
+    // {
+    //     name: "Butelka po soku",
+    //     type: "sztuczne",
+    //     img: "",
+    // },
+    // {
+    //     name: "Torebka foliowa",
+    //     type: "sztuczne",
+    //     img: "",
+    // },
+    // {
+    //     name: "Zgniłe jabłko",
+    //     type: "bio",
+    //     img: "",
+    // },
+    // {
+    //     name: "Karton po mleku",
+    //     type: "papier",
+    //     img: "",
+    // },
+    // {
+    //     name: "Plastikowa torba",
+    //     type: "sztuczne",
+    //     img: "",
+    // },
+    // {
+    //     name: "Rozbity słoik po dżemie",
+    //     type: "szkło",
+    //     img: "",
+    // },
+    // {
+    //     name: "Wiadro",
+    //     type: "sztuczne",
+    //     img: "",
+    // },
+    // {
+    //     name: "Stary but",
+    //     type: "zmieszane",
+    //     img: "",
+    // },
+    // {
+    //     name: "Stara gazeta",
+    //     type: "papier",
+    //     img: "",
+    // },
+    // {
+    //     name: "Plastikowy widelec",
+    //     type: "sztuczne",
+    //     img: "",
+    // },
+    // {
+    //     name: "Resztki jedzenia",
+    //     type: "bio",
+    //     img: "",
+    // },
+    // {
+    //     name: "Szklanka",
+    //     type: "szkło",
+    //     img: "",
+    // },
+    // {
+    //     name: "Metalowa łyżka",
+    //     type: "sztuczne",
+    //     img: "",
+    // },
+    // {
+    //     name: "Kawałek drewna",
+    //     type: "bio",
+    //     img: "",
+    // },
+    // {
+    //     name: "Karton po jajkach",
+    //     type: "papier",
+    //     img: "",
+    // },
 ]
 
 export const rubbishCategoryFullname = {
@@ -155,5 +152,5 @@ export const rubbishCategoryFullname = {
     sztuczne: "Tworzywa sztuczne",
     szkło: "Szkło",
     bio: "Bio",
-    elektro: "Elektrośmieci"
+    elektro: "Elektrośmieci",
 }

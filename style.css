@@ -1,13 +1,95 @@
+@keyframes animateA {
+    from {
+        transform: translate(-50%, -50%) scale(1);
+        opacity: 1;
+    }
+
+    to {
+        transform: translate(calc(-50% + 250px), -50%) scale(0.75);
+        opacity: 0;
+    }
+}
+
+@keyframes animateB {
+    from {
+        transform: translate(calc(-50% - 250px), -50%) scale(0.75);
+        opacity: 0;
+    }
+
+    to {
+        transform: translate(-50%, -50%) scale(1);
+        opacity: 1;
+    }
+}
+
+body {
+    background-color: rgb(255, 255, 255);
+    margin: 0;
+    padding: 0;
+    font-family: sans-serif;
+}
+
+#maingame,
+#minigame {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    display: none;
+}
+
+#maingame {
+    display: block;
+}
+
+#minigame {
+    display: none;
+}
+
+body[showtype="minigame"] #minigame {
+    display: block;
+}
+
+body[showtype="minigame"] #maingame {
+    display: none;
+}
+
 button.rubbishCan {
-    background-color: #d9534f;
-    color: white;
+    background-color: transparent;
     border: none;
-    padding: 10px 20px;
-    text-align: center;
     text-decoration: none;
-    display: inline-block;
     font-size: 16px;
-    margin: 4px 2px;
+
+    display: inline-block;
+    position: fixed;
+    right: 10px;
+
     cursor: pointer;
-    border-radius: 5px;
+}
+
+img.toCan {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    animation-name: animateA;
+    animation-duration: 500ms;
+    animation-fill-mode: forwards;
+    animation-iteration-count: 1;
+    animation-delay: 1ms;
+    animation-timing-function: cubic-bezier(0, .87, .46, .99);
+}
+
+img.toCenter {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    animation-name: animateB;
+    animation-duration: 500ms;
+    animation-fill-mode: forwards;
+    animation-iteration-count: 1;
+    animation-delay: 1ms;
+    animation-timing-function: cubic-bezier(0, .87, .46, .99);
 }
