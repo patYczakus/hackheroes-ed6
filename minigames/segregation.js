@@ -1,10 +1,10 @@
 //@ts-check
 
 import { elements } from "../elements.js"
-import { rubbishCategoryFullname, rubbishData } from "../rubbish.js"
+import { rubbishCategoryFullname, rubbishData } from "../lists/rubbish.js"
 
 /**
- * @type {{ data: import("../rubbish.js").RubbishFields, img: string | URL, i: number }}
+ * @type {{ data: import("../lists/rubbish.js").RubbishFields, img: string | URL, i: number }}
  */
 let randomElement
 

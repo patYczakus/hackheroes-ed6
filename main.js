@@ -1,3 +1,3 @@
-import { game_segregation } from "./minigames/segregation.js"
+import { start } from "./maingame_mechanics/map.js"
 
-window.onload = game_segregation
+window.onload = start
