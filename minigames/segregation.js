@@ -1,5 +1,6 @@
 //@ts-check
 
+import { localizatorHandler } from "../communicator.js"
 import { elements } from "../elements.js"
 import { rubbishCategoryFullname, rubbishData } from "../lists/rubbish.js"
 
@@ -9,6 +10,8 @@ import { rubbishCategoryFullname, rubbishData } from "../lists/rubbish.js"
 let randomElement
 
 const rubbishDiv = document.createElement("div")
+
+const text = document.createElement("div")
 
 /**
  * @param {string} canType
@@ -28,7 +31,7 @@ const checkElements = (canType, element) => {
             rubbishDiv.appendChild(oldimage)
             setTimeout(() => {
                 oldimage.remove()
-            }, 510)
+            }, 275)
 
             getRandomTrash()
 
@@ -39,6 +42,12 @@ const checkElements = (canType, element) => {
             newimage.height = 200
             newimage.className = "toCenter"
             rubbishDiv.appendChild(newimage)
+
+            element.classList.add("bounceAnimation")
+            setTimeout(() => element.classList.remove("bounceAnimation"), 510)
+        } else {
+            element.classList.add("shakeAnimation")
+            setTimeout(() => element.classList.remove("shakeAnimation"), 510)
         }
     }
 }
@@ -65,8 +74,10 @@ export function game_segregation() {
         element.type = "button"
         element.className = "rubbishCan"
         element.addEventListener("click", checkElements(canType, element))
+        element.addEventListener("mouseover", () => (text.innerText = `${randomElement.data.name} > ${rubbishCategoryFullname[canType]}?`))
+        element.addEventListener("mouseout", () => (text.innerText = `${randomElement.data.name} > ...`))
         element.innerHTML = `<img src="imgs/cans/${canType}.png" alt="${rubbishCategoryFullname[canType]}" width="130" height="130">`
-        element.style.top = `${i * 130}px`
+        element.style.top = `${i * 130 + 50}px`
         elements.minigameDiv.appendChild(element)
     }
 
@@ -78,6 +89,11 @@ export function game_segregation() {
     newimage.height = 200
     newimage.className = "toCenter"
     rubbishDiv.appendChild(newimage)
+
+    text.id = "bottomtext"
+    document.body.appendChild(text)
+
+    localizatorHandler.set("segregation")
 
     document.body.setAttribute("showtype", "minigame")
 }

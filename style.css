@@ -5,20 +5,56 @@
     }
 
     to {
-        transform: translate(calc(-50% + 250px), -50%) scale(0.75);
+        transform: translate(calc(-50% + 500px), -50%) scale(0.75);
         opacity: 0;
     }
 }
 
 @keyframes animateB {
     from {
-        transform: translate(calc(-50% - 250px), -50%) scale(0.75);
+        transform: translate(calc(-50% - 500px), -50%) scale(0.75);
         opacity: 0;
     }
 
     to {
         transform: translate(-50%, -50%) scale(1);
         opacity: 1;
+    }
+}
+
+@keyframes shake {
+    0% {
+        transform: translateX(0);
+    }
+
+    25% {
+        transform: translateX(10px);
+    }
+
+    50% {
+        transform: translateX(-10px);
+    }
+
+    75% {
+        transform: translateX(10px);
+    }
+
+    100% {
+        transform: translateX(0);
+    }
+}
+
+@keyframes bounce {
+    0% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-20px);
+    }
+
+    100% {
+        transform: translateY(0);
     }
 }
 
@@ -74,7 +110,7 @@ img.toCan {
     left: 50%;
     transform: translate(-50%, -50%);
     animation-name: animateA;
-    animation-duration: 500ms;
+    animation-duration: 250ms;
     animation-fill-mode: forwards;
     animation-iteration-count: 1;
     animation-delay: 1ms;
@@ -87,9 +123,30 @@ img.toCenter {
     left: 50%;
     transform: translate(-50%, -50%);
     animation-name: animateB;
-    animation-duration: 500ms;
-    animation-fill-mode: forwards;
+    animation-duration: 250ms;
+    animation-delay: 250ms;
+    animation-fill-mode: backwards;
     animation-iteration-count: 1;
-    animation-delay: 1ms;
     animation-timing-function: cubic-bezier(0, .87, .46, .99);
+}
+
+#bottomtext {
+    position: fixed;
+    bottom: 10px;
+    left: 10px;
+    width: calc(100vw - 20px);
+    font-size: 25px;
+    font-weight: 700;
+}
+
+.shakeAnimation {
+    animation-name: shake;
+    animation-duration: 500ms;
+    animation-iteration-count: 1;
+}
+
+.bounceAnimation {
+    animation-name: bounce;
+    animation-duration: 500ms;
+    animation-iteration-count: 1;
 }
