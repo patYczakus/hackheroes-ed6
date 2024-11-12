@@ -61,16 +61,21 @@ window.movePlayer = (type, step, then) => {
     return true
 }
 
-//add mouse movement (1 pixel in-game equally 100px)
 document.addEventListener("mouseup", (e) => {
     if (localizatorHandler.get() == "maingame") {
         const rect = elements.maingameDiv.getBoundingClientRect()
         const x = e.clientX - rect.width / 2
         const y = e.clientY - rect.height / 2
         console.log(`[DEBUG] Rozpoczęcie ruchu dla postaci (x=${player.x + Math.round(x / 100)}, y=${player.y + Math.round(y / 100)})`)
-        if (player.y + Math.round(y / 100) > 22 || player.y + Math.round(y / 100) < -2 || player.x + Math.round(x / 100) < -12 || player.x + Math.round(x / 100) > 12) return
-        movePlayer("x", x / 100, () =>
-            movePlayer("y", y / 100, () => {
+        if (
+            player.y + Math.round(y / 100 / scale) > 22 ||
+            player.y + Math.round(y / 100 / scale) < -2 ||
+            player.x + Math.round(x / 100 / scale) < -12 ||
+            player.x + Math.round(x / 100 / scale) > 12
+        )
+            return
+        movePlayer("x", x / 100 / scale, () =>
+            movePlayer("y", y / 100 / scale, () => {
                 const searchedItem = itemsOnMapHandler.get().find((item) => item.cords[0] === player.x && item.cords[1] === player.y)
                 if (searchedItem) {
                     console.log(`[DEBUG] Znaleziono przedmiot`, [searchedItem])
@@ -79,6 +84,16 @@ document.addEventListener("mouseup", (e) => {
                             itemsInIventory.push(searchedItem.toInventoryItem())
                             itemsOnMapHandler.remove(searchedItem)
                             console.log(`[DEBUG] Przedmiot dodany do ekwipunku`, [searchedItem.toInventoryItem()], `\n        Ilość rzeczy w ekwipunku: ${itemsInIventory.length}`)
+                            break
+                        case "interactiveElement":
+                            console.log(`[DEBUG] Uruchamianie odwołania ${searchedItem.properties.referenceto}`)
+                            const _temp = async () => {
+                                let func = (await import(`../${searchedItem.properties.referenceto.split(":").at(0)}.js`))[searchedItem.properties.referenceto.split(":").at(1)]
+                                console.log(`[DEBUG/interactiveElement] Typ zmiennej:`, typeof func)
+                                func?.()
+                            }
+                            _temp()
+
                             break
                     }
                 }

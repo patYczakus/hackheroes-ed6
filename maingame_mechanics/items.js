@@ -20,11 +20,14 @@ export class MapItem {
         this.name = itemObj.name
         /**
          * @readonly
-         * @type {ItemParentOption}
          */
         this.parentID = itemObj.parentID
         Object.freeze(this.parentID)
-        this.creation = new Date()
+        /**
+         * @readonly
+         */
+        this.UID = (Date.now() * 100000 + Math.round(Math.random() * 65536)).toString(26).toUpperCase()
+        Object.freeze(this.UID)
         this.properties = itemObj.customProperties
 
         this.cords = cords
@@ -56,7 +59,11 @@ export class InventoryItem {
          */
         this.parentID = itemObj.parentID
         Object.freeze(this.parentID)
-        this.creation = new Date()
+        /**
+         * @readonly
+         */
+        this.UID = (Date.now() * 100000 + Math.round(Math.random() * 65536)).toString(26).toUpperCase()
+        Object.freeze(this.UID)
         this.properties = itemObj.customProperties
     }
 
@@ -77,8 +84,26 @@ export class InventoryItem {
     }
 }
 
+var itemsOnMap = [
+    new MapItem(
+        {
+            name: "Tabliczka",
+            parentID: "sign",
+            customProperties: { display: [{ text: "Dom " }, { text: "najlepszego", color: "#00cc00" }, { text: " gracza :3" }] },
+        },
+        [-1, -2]
+    ),
+    new MapItem(
+        {
+            name: "Wejście do domu gracza",
+            parentID: "interactiveElement",
+            customProperties: { referenceto: "minigames/segregation:game_segregation" },
+        },
+        [0, -2]
+    ),
+]
+
 function generateSomeRubbishOnMap() {
-    const items = []
     for (let i = 0; i < Math.random() * 20 + 10; i++) {
         let noCollision
         do {
@@ -90,16 +115,18 @@ function generateSomeRubbishOnMap() {
             const x = Math.round(Math.random() * 22 - 11)
             const y = Math.round(Math.random() * 22 - 1)
 
-            noCollision = !Boolean(items.find((it) => it.cords[0] == x && it.cords[1] == y))
+            noCollision = !Boolean(itemsOnMap.find((it) => it.cords[0] == x && it.cords[1] == y))
 
             if (noCollision)
-                items.push(new MapItem({ name: randomRubbish.name, parentID: "rubbish", customProperties: { rubbishID: randomRubbishID, displayRubbishImg: randomImg } }, [x, y]))
+                itemsOnMap.push(
+                    new MapItem({ name: randomRubbish.name, parentID: "rubbish", customProperties: { rubbishID: randomRubbishID, displayRubbishImg: randomImg } }, [x, y])
+                )
         } while (!noCollision)
     }
-    return items
 }
 
-var itemsOnMap = generateSomeRubbishOnMap()
+generateSomeRubbishOnMap()
+
 export const itemsOnMapHandler = {
     get: () => itemsOnMap,
     /**
@@ -111,6 +138,6 @@ export const itemsOnMapHandler = {
      * @param {MapItem} item
      */
     remove: (item) => {
-        itemsOnMap = itemsOnMap.filter((e) => e.creation !== item.creation)
+        itemsOnMap = itemsOnMap.filter((e) => e.UID !== item.UID)
     },
 }

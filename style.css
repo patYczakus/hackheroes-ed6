@@ -58,15 +58,37 @@
     }
 }
 
+@keyframes fading {
+
+    0%,
+    100% {
+        opacity: 1;
+    }
+
+    50% {
+        opacity: 0;
+    }
+}
+
+* {
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    touch-action: none;
+    user-select: none;
+}
+
 body {
     background-color: rgb(255, 255, 255);
     margin: 0;
     padding: 0;
-    font-family: sans-serif;
+    font-family: monospace;
 }
 
 #maingame,
-#minigame {
+#minigame,
+#loading {
     position: fixed;
     top: 0;
     left: 0;
@@ -75,18 +97,40 @@ body {
     display: none;
 }
 
+#loading {
+    background-color: black;
+    justify-content: center;
+    text-align: center;
+    align-items: center;
+    color: white;
+    font-size: 3em;
+    z-index: 100;
+}
+
 #maingame {
     display: block;
 }
 
-#minigame {
+#minigame,
+#loading {
     display: none;
+}
+
+#minigame.segregation {
+    /* image background */
+    background: url("imgs/others/floorv2.png");
 }
 
 body[showtype="minigame"] #minigame {
     display: block;
 }
 
+body[showtype="loading"] #loading {
+    display: flex;
+}
+
+
+body[showtype="loading"] #maingame,
 body[showtype="minigame"] #maingame {
     display: none;
 }
@@ -96,11 +140,9 @@ button.rubbishCan {
     border: none;
     text-decoration: none;
     font-size: 16px;
-
     display: inline-block;
     position: fixed;
     right: 10px;
-
     cursor: pointer;
 }
 
@@ -135,8 +177,10 @@ img.toCenter {
     bottom: 10px;
     left: 10px;
     width: calc(100vw - 20px);
-    font-size: 25px;
+    text-align: center;
+    font-size: 20px;
     font-weight: 700;
+    color: white;
 }
 
 .shakeAnimation {
@@ -149,4 +193,21 @@ img.toCenter {
     animation-name: bounce;
     animation-duration: 500ms;
     animation-iteration-count: 1;
+}
+
+span.fading {
+    animation-name: fading;
+    animation-duration: 1000ms;
+    animation-delay: calc(var(--i) * 100ms);
+    animation-timing-function: steps(5);
+    animation-iteration-count: infinite;
+}
+
+.iteminfo {
+    position: absolute;
+    align-items: center;
+    justify-content: center;
+    top: 10px;
+    left: 10px;
+    pointer-events: none;
 }

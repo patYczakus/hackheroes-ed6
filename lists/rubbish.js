@@ -63,6 +63,7 @@ export const rubbishData = [
         name: "Puszka",
         type: "sztuczne",
         img: "imgs/rubbish/puszka.png",
+        variantImgs: ["imgs/rubbish/puszka_v1.png", "imgs/rubbish/puszka_v2.png", "imgs/rubbish/puszka_v3.png", "imgs/rubbish/puszka_v4.png", "imgs/rubbish/puszka_v5.png"],
     },
     {
         name: "Zjedzone jabłko",
@@ -79,11 +80,37 @@ export const rubbishData = [
         type: "papier",
         img: "imgs/rubbish/wytłaczanka.png",
     },
-    // {
-    //     name: "Plastikowy kubek",
-    //     type: "sztuczne",
-    //     img: "",
-    // },
+    {
+        name: "Plastikowy kubek",
+        type: "sztuczne",
+        img: "imgs/rubbish/kubek_plastik.png",
+    },
+    {
+        name: "Wiadro",
+        type: "sztuczne",
+        img: "imgs/rubbish/wiadro.png",
+    },
+    {
+        name: "Stary but",
+        type: "zmieszane",
+        img: "imgs/rubbish/shoe.png",
+    },
+    {
+        name: "Szklanka",
+        type: "szkło",
+        img: "imgs/rubbish/szklanka.png",
+    },
+    {
+        name: "Metalowa łyżka",
+        type: "sztuczne",
+        img: "imgs/rubbish/łycha.png",
+    },
+    {
+        name: "Rozbita żarówka",
+        type: "elektro",
+        img: "imgs/rubbish/zarówka.png",
+        variantImgs: ["imgs/rubbish/zarówka_v1.png"],
+    },
     // {
     //     name: "Butelka po soku",
     //     type: "sztuczne",
@@ -105,16 +132,6 @@ export const rubbishData = [
     //     img: "",
     // },
     // {
-    //     name: "Wiadro",
-    //     type: "sztuczne",
-    //     img: "",
-    // },
-    // {
-    //     name: "Stary but",
-    //     type: "zmieszane",
-    //     img: "",
-    // },
-    // {
     //     name: "Stara gazeta",
     //     type: "papier",
     //     img: "",
@@ -128,21 +145,6 @@ export const rubbishData = [
     //     name: "Resztki jedzenia",
     //     type: "bio",
     //     img: "",
-    // },
-    // {
-    //     name: "Szklanka",
-    //     type: "szkło",
-    //     img: "",
-    // },
-    // {
-    //     name: "Metalowa łyżka",
-    //     type: "sztuczne",
-    //     img: "",
-    // },
-    // {
-    //     name: "Rozbita żarówka",
-    //     type: "elektro",
-    //     img: "imgs/rubbish/",
     // },
     // {
     //     name: "Zepsuty telefon",
