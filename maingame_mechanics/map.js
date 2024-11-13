@@ -2,6 +2,7 @@ import { localizatorHandler } from "../communicator.js"
 import { elements } from "../elements.js"
 import { rubbishData } from "../lists/rubbish.js"
 import { itemsOnMapHandler } from "./items.js"
+import { NPCsInfo } from "./npcs.js"
 import { player } from "./player.js"
 
 var cursorLoc = { x: 0, y: 0 }
@@ -41,10 +42,14 @@ const mapImages = {
 }
 const pimages = {}
 const rimages = {}
-
+const NPCsImages = {}
 const otherImages = {
     sign: new Image(),
+    location: new Image(),
     home1: new Image(),
+    home2: new Image(),
+    home3: new Image(),
+    home4: new Image(),
 }
 
 const canvas = document.createElement("canvas")
@@ -247,7 +252,6 @@ async function generateMap() {
 
     //--------------
 
-    //draw house (w=2, h=3)
     context.drawImage(
         otherImages.home1,
         (-1 - player.x) * imageScale * scale - (imageScale / 2) * scale,
@@ -255,6 +259,39 @@ async function generateMap() {
         2 * imageScale * scale,
         3 * imageScale * scale
     )
+    context.drawImage(
+        otherImages.home2,
+        (-6 - player.x) * imageScale * scale - (imageScale / 2) * scale,
+        (-4 - player.y) * imageScale * scale - (imageScale / 2) * scale,
+        2 * imageScale * scale,
+        3 * imageScale * scale
+    )
+    context.drawImage(
+        otherImages.home3,
+        (4 - player.x) * imageScale * scale - (imageScale / 2) * scale,
+        (-4 - player.y) * imageScale * scale - (imageScale / 2) * scale,
+        2 * imageScale * scale,
+        3 * imageScale * scale
+    )
+    context.drawImage(
+        otherImages.home4,
+        (-15 - player.x) * imageScale * scale - (imageScale / 2) * scale,
+        (3 - player.y) * imageScale * scale - (imageScale / 2) * scale,
+        3 * imageScale * scale,
+        3 * imageScale * scale
+    )
+
+    //--------------
+
+    Object.keys(NPCsInfo).forEach((e) => {
+        context.drawImage(
+            NPCsImages[`${e}_main_f${NPCsInfo[e].tick}`],
+            (NPCsInfo[e].x - player.x) * imageScale * scale - (imageScale / 2) * scale,
+            (NPCsInfo[e].y - player.y) * imageScale * scale - (imageScale / 2) * scale,
+            imageScale * scale,
+            imageScale * scale
+        )
+    })
 
     //--------------
 
@@ -321,12 +358,13 @@ function getItemInfo() {
                 case "sign":
                     return otherImages.sign
                 case "interactiveElement":
-                    return otherImages.sign
+                    return otherImages.location
             }
         })()
         img.alt = "ITEM"
         img.width = 100
         img.height = 100
+        img.style.marginTop = "10px"
         img.style.float = "left"
         img.style.marginRight = "10px"
         const name = document.createElement("h1")
@@ -378,6 +416,11 @@ export async function start() {
         },
         directions: ["up", "down", "left", "right"],
     }
+    Object.keys(NPCsInfo).forEach((e) => {
+        for (let i = 0; i < 4; i++) {
+            NPCsImages[`${e}_main_f${i}`] = new Image()
+        }
+    })
 
     pconstruction.directions.forEach((direction) => {
         Object.entries(pconstruction.frames).forEach((frame) => {
@@ -435,6 +478,18 @@ export async function start() {
         })
     )
 
+    await Promise.all(
+        Object.entries(NPCsImages).map((e) => {
+            return new Promise((resolve) => {
+                e[1].onload = () => {
+                    console.log(`[DEBUG] Załadowano zdjęcie imgs/npcs/${e[0]}.png`)
+                    resolve(undefined)
+                }
+                e[1].src = `imgs/npcs/${e[0]}.png`
+            })
+        })
+    )
+
     calculateScale()
     tick()
 
@@ -443,7 +498,7 @@ export async function start() {
 }
 
 function tick() {
-    if (localizatorHandler.get() == "maingame") {
+    if (localizatorHandler.get().startsWith("maingame")) {
         canvas.width = elements.maingameDiv.offsetWidth
         canvas.height = elements.maingameDiv.offsetHeight
         context?.translate(canvas.width / 2, canvas.height / 2)
@@ -475,13 +530,13 @@ document.addEventListener("mousemove", (e) => {
     const x = player.x * imageScale * scale + roundToTheFix(e.clientX - canvas.width / 2, imageScale * scale)
     const y = player.y * imageScale * scale + roundToTheFix(e.clientY - canvas.height / 2, imageScale * scale)
     if ((cursorLoc.x !== x || cursorLoc.y !== y) && player.state == "idle") {
-        if (localizatorHandler.get() == "maingame")
+        if (localizatorHandler.get().startsWith("maingame"))
             console.log(
                 `[DEBUG/less] Zmiana położenia lokalizacji klocka (x=${x / 100}, y=${y / 100}, rx=${roundToTheFix(e.clientX - canvas.width / 2, imageScale) / 100}, ry=${
                     roundToTheFix(e.clientY - canvas.height / 2, imageScale) / 100
                 })`
             )
         cursorLoc = { x, y }
-        getItemInfo()
+        if (localizatorHandler.get() == "maingame") getItemInfo()
     }
 })

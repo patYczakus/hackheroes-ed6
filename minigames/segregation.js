@@ -4,7 +4,7 @@ import { localizatorHandler } from "../communicator.js"
 import { elements } from "../elements.js"
 import { rubbishCategoryFullname, rubbishData } from "../lists/rubbish.js"
 import { InventoryItem } from "../maingame_mechanics/items.js"
-import { itemsInIventory } from "../maingame_mechanics/player.js"
+import { itemsInIventoryHandler } from "../maingame_mechanics/player.js"
 
 /**
  * @type {Array<InventoryItem>}
@@ -41,7 +41,7 @@ const checkElements = (canType, element) => {
                 oldimage.remove()
             }, 275)
 
-            rubbishes.pop()
+            rubbishes.shift()
             const _t = getTrash()
 
             if (!_t) {
@@ -82,7 +82,7 @@ const checkElements = (canType, element) => {
 }
 
 function getTrash() {
-    const rubbish = rubbishes.at(-1)
+    const rubbish = rubbishes[0]
     if (!rubbish) return false
     randomElement = {
         data: rubbishData[rubbish.properties.rubbishID],
@@ -93,12 +93,15 @@ function getTrash() {
 }
 
 export function game_segregation() {
-    if (itemsInIventory.filter((x) => x.parentID == "rubbish").length == 0) return
+    if (itemsInIventoryHandler.get("rubbish").length == 0) return localizatorHandler.set("maingame")
 
     localizatorHandler.set("l")
     document.body.setAttribute("showtype", "loading")
 
-    rubbishes.push(...itemsInIventory.filter((x) => x.parentID == "rubbish").sort(() => Math.random() - 0.5))
+    itemsInIventoryHandler.get("rubbish").forEach((item) => {
+        rubbishes.push(item)
+        itemsInIventoryHandler.remove(item)
+    })
 
     elements.minigameDiv.innerHTML = ""
     elements.minigameDiv.appendChild(rubbishDiv)

@@ -8,6 +8,7 @@ export const player = {
     frame: 0,
     state: "idle",
     direction: "down",
+    memory: {},
 }
 
 let isPlayerMoving = false
@@ -90,7 +91,7 @@ document.addEventListener("mouseup", (e) => {
                             const _temp = async () => {
                                 let func = (await import(`../${searchedItem.properties.referenceto.split(":").at(0)}.js`))[searchedItem.properties.referenceto.split(":").at(1)]
                                 console.log(`[DEBUG/interactiveElement] Typ zmiennej:`, typeof func)
-                                func?.()
+                                func?.(...searchedItem.properties.referenceto.split(":").filter((x, i) => i >= 2))
                             }
                             _temp()
 
@@ -105,4 +106,12 @@ document.addEventListener("mouseup", (e) => {
 /**
  * @type {Array<InventoryItem>}
  */
-export var itemsInIventory = []
+let itemsInIventory = []
+
+export const itemsInIventoryHandler = {
+    get: (parentLimiter) => (parentLimiter ? itemsInIventory.filter((x) => x.parentID == parentLimiter) : itemsInIventory),
+    add: (item) => itemsInIventory.push(item),
+    remove: (item) => {
+        itemsInIventory = itemsInIventory.filter((e) => e.UID !== item.UID)
+    },
+}

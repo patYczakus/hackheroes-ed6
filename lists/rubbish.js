@@ -111,11 +111,16 @@ export const rubbishData = [
         img: "imgs/rubbish/zarówka.png",
         variantImgs: ["imgs/rubbish/zarówka_v1.png"],
     },
-    // {
-    //     name: "Butelka po soku",
-    //     type: "sztuczne",
-    //     img: "",
-    // },
+    {
+        name: "Butelka po soku",
+        type: "sztuczne",
+        img: "imgs/rubbish/soczek.png",
+    },
+    {
+        name: "Stara gazeta",
+        type: "papier",
+        img: "imgs/rubbish/gazeta.png",
+    },
     // {
     //     name: "Torebka foliowa",
     //     type: "sztuczne",
@@ -129,11 +134,6 @@ export const rubbishData = [
     // {
     //     name: "Słoik po dżemie",
     //     type: "szkło",
-    //     img: "",
-    // },
-    // {
-    //     name: "Stara gazeta",
-    //     type: "papier",
     //     img: "",
     // },
     // {

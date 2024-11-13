@@ -95,15 +95,31 @@ var itemsOnMap = [
     ),
     new MapItem(
         {
+            name: "Tabliczka",
+            parentID: "sign",
+            customProperties: { display: [{ text: "Dom jakiegoś mieszkańca" }] },
+        },
+        [4, -2]
+    ),
+    new MapItem(
+        {
+            name: "Tabliczka",
+            parentID: "sign",
+            customProperties: { display: [{ text: "Dom jakiegoś mieszkańca" }] },
+        },
+        [-6, -2]
+    ),
+    new MapItem(
+        {
             name: "Wejście do domu gracza",
             parentID: "interactiveElement",
-            customProperties: { referenceto: "minigames/segregation:game_segregation" },
+            customProperties: { referenceto: "maingame_mechanics/createmenu:generateOptions:player" },
         },
         [0, -2]
     ),
 ]
 
-function generateSomeRubbishOnMap() {
+export function generateSomeRubbishOnMap() {
     for (let i = 0; i < Math.random() * 20 + 10; i++) {
         let noCollision
         do {
