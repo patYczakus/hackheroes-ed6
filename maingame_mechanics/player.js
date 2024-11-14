@@ -2,7 +2,7 @@ import { localizatorHandler } from "../communicator.js"
 import { elements } from "../elements.js"
 import { InventoryItem, itemsOnMapHandler } from "./items.js"
 
-export const player = {
+export let player = {
     x: 0,
     y: 0,
     frame: 0,
@@ -89,7 +89,14 @@ document.addEventListener("mouseup", (e) => {
                         case "interactiveElement":
                             console.log(`[DEBUG] Uruchamianie odwołania ${searchedItem.properties.referenceto}`)
                             const _temp = async () => {
-                                let func = (await import(`../${searchedItem.properties.referenceto.split(":").at(0)}.js`))[searchedItem.properties.referenceto.split(":").at(1)]
+                                const importion = await import(`../${searchedItem.properties.referenceto.split(":").at(0)}.js`)
+                                const funcinstring = searchedItem.properties.referenceto.split(":").at(1).split(".")
+                                let func = importion
+
+                                for (let i = 0; i < funcinstring.length; i++) {
+                                    func = func[funcinstring[i]]
+                                }
+
                                 console.log(`[DEBUG/interactiveElement] Typ zmiennej:`, typeof func)
                                 func?.(...searchedItem.properties.referenceto.split(":").filter((x, i) => i >= 2))
                             }
@@ -114,4 +121,11 @@ export const itemsInIventoryHandler = {
     remove: (item) => {
         itemsInIventory = itemsInIventory.filter((e) => e.UID !== item.UID)
     },
+}
+
+export function setPlayerDirection(direction) {
+    player.direction = direction
+}
+export function setWholePlayerData(data) {
+    player = data
 }

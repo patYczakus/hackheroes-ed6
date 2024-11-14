@@ -2,6 +2,7 @@
 
 import { localizatorHandler } from "../communicator.js"
 import { game_segregation } from "../minigames/segregation.js"
+import { dialogSystem } from "./dialogs.js"
 import { generateSomeRubbishOnMap } from "./items.js"
 import { player } from "./player.js"
 
@@ -33,7 +34,10 @@ export function generateOptions(type) {
             //h1
             const sleepH1 = document.createElement("h1")
             sleepH1.innerText = "Śpij do następnego dnia"
+            const sleepSpan = document.createElement("span")
+            sleepSpan.innerText = "Spanie powoduje zapis gry na później, regenerację śmieci i możliwości ponownej rozmowy"
             sleep.appendChild(sleepH1)
+            sleep.appendChild(sleepSpan)
             sleep.addEventListener("click", () => {
                 element.style.background = "black"
                 element.style.color = "white"
@@ -49,8 +53,11 @@ export function generateOptions(type) {
                     element.style.color = ""
                     element.style.fontSize = ""
                 }, 6500)
+
                 player.direction = "down"
                 generateSomeRubbishOnMap()
+                player.memory.talkedToday = []
+                localStorage.setItem("data", JSON.stringify(player))
             })
             element.appendChild(sleep)
 
@@ -64,6 +71,7 @@ export function generateOptions(type) {
                 player.direction = "down"
             })
             element.appendChild(segregationbtn)
+
             break
     }
 

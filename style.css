@@ -167,6 +167,16 @@ body[showtype="minigame"] #maingame {
     display: none;
 }
 
+#maingame.startmenu {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background: #282c34 url('imgs/bg.png') no-repeat bottom center fixed;
+    color: white;
+    text-align: center;
+}
+
 button.rubbishCan {
     background-color: transparent;
     border: none;
@@ -280,4 +290,11 @@ button {
 button:hover {
     background-color: #ffffff;
     color: #000000;
+}
+
+.innerdiv {
+    border: 2px solid white;
+    padding: 20px;
+    border-radius: 10px;
+    background-color: rgba(255, 255, 255, 0.1);
 }

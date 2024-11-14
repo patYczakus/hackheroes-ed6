@@ -1,8 +1,8 @@
 //@ts-check
 /**
- * @type {string | null}
+ * @type {string}
  */
-let gameLocalization = null
+let gameLocalization = ""
 
 export const localizatorHandler = {
     /**
@@ -11,7 +11,7 @@ export const localizatorHandler = {
      */
     set: (element) => (gameLocalization = element),
     /**
-     * @returns {string | null}
+     * @returns {string}
      */
     get: () => gameLocalization,
 }

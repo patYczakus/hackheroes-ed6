@@ -117,6 +117,22 @@ var itemsOnMap = [
         },
         [0, -2]
     ),
+    new MapItem(
+        {
+            name: "Rozmowa z Zygfrydem",
+            parentID: "interactiveElement",
+            customProperties: { referenceto: "maingame_mechanics/dialogs:dialogSystem.start:zf" },
+        },
+        [-11, 5]
+    ),
+    new MapItem(
+        {
+            name: "Rozmowa z Anną",
+            parentID: "interactiveElement",
+            customProperties: { referenceto: "maingame_mechanics/dialogs:dialogSystem.start:zf" },
+        },
+        [11, 20]
+    ),
 ]
 
 export function generateSomeRubbishOnMap() {
