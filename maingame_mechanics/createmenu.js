@@ -3,7 +3,7 @@
 import { localizatorHandler } from "../communicator.js"
 import { game_segregation } from "../minigames/segregation.js"
 import { dialogSystem } from "./dialogs.js"
-import { generateSomeRubbishOnMap } from "./items.js"
+import { generateSomeRubbishOnMap, itemsOnMapHandler } from "./items.js"
 import { player } from "./player.js"
 
 const element = document.createElement("div")

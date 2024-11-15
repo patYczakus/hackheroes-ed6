@@ -98,6 +98,7 @@ document.addEventListener("mouseup", (e) => {
                                 }
 
                                 console.log(`[DEBUG/interactiveElement] Typ zmiennej:`, typeof func)
+                                if (searchedItem.properties.forceToDirection) player.direction = searchedItem.properties.forceToDirection
                                 func?.(...searchedItem.properties.referenceto.split(":").filter((x, i) => i >= 2))
                             }
                             _temp()

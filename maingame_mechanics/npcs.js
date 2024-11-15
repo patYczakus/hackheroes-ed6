@@ -9,6 +9,11 @@ export const NPCsInfo = {
         x: 12,
         y: 20,
     },
+    olgierd: {
+        tick: Math.floor(Math.random() * 4),
+        x: 12,
+        y: 10,
+    },
 }
 
 function tickTheNPCs() {

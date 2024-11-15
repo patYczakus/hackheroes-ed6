@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Kelly+Slab&display=swap');
+
 @keyframes animateA {
     from {
         transform: translate(-50%, -50%) scale(1);
@@ -93,7 +95,7 @@ body {
     background-color: rgb(255, 255, 255);
     margin: 0;
     padding: 0;
-    font-family: monospace;
+    font-family: "Kelly Slab", monospace;
 }
 
 #maingame,
@@ -175,6 +177,28 @@ body[showtype="minigame"] #maingame {
     background: #282c34 url('imgs/bg.png') no-repeat bottom center fixed;
     color: white;
     text-align: center;
+}
+
+/*pixel-style button*/
+button {
+    background-color: #000000;
+    border: 5px solid #ffffff;
+    color: #ffffff;
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+    font-family: "Kelly Slab", monospace;
+    display: inline-block;
+    font-size: 20px;
+    font-weight: 800;
+    margin: 4px 2px;
+    cursor: pointer;
+    transition: all steps(5) .25s;
+}
+
+button:not(.rubbishCan):hover {
+    background-color: #ffffff;
+    color: #000000;
 }
 
 button.rubbishCan {
@@ -270,27 +294,6 @@ span.fading {
     scale: 1.1
 }
 
-/*pixel-style button*/
-button {
-    background-color: #000000;
-    border: 5px solid #ffffff;
-    color: #ffffff;
-    padding: 10px 20px;
-    text-align: center;
-    text-decoration: none;
-    font-family: monospace;
-    display: inline-block;
-    font-size: 20px;
-    font-weight: 800;
-    margin: 4px 2px;
-    cursor: pointer;
-    transition: all steps(5) .25s;
-}
-
-button:hover {
-    background-color: #ffffff;
-    color: #000000;
-}
 
 .innerdiv {
     border: 2px solid white;

@@ -89,7 +89,7 @@ var itemsOnMap = [
         {
             name: "Tabliczka",
             parentID: "sign",
-            customProperties: { display: [{ text: "Dom " }, { text: "najlepszego", color: "#00cc00" }, { text: " gracza :3" }] },
+            customProperties: { display: [{ text: "Dom " }, { text: "najlepszego", color: "#00cc00" }, { text: " gracza :3 | Nowa wieś 1" }] },
         },
         [-1, -2]
     ),
@@ -97,7 +97,7 @@ var itemsOnMap = [
         {
             name: "Tabliczka",
             parentID: "sign",
-            customProperties: { display: [{ text: "Dom jakiegoś mieszkańca" }] },
+            customProperties: { display: [{ text: "Nowa wieś 2" }] },
         },
         [4, -2]
     ),
@@ -105,10 +105,53 @@ var itemsOnMap = [
         {
             name: "Tabliczka",
             parentID: "sign",
-            customProperties: { display: [{ text: "Dom jakiegoś mieszkańca" }] },
+            customProperties: { display: [{ text: "Nowa wieś 3" }] },
         },
         [-6, -2]
     ),
+    new MapItem(
+        {
+            name: "Tabliczka",
+            parentID: "sign",
+            customProperties: {
+                display: [
+                    { text: "N", color: "#d4af37" },
+                    { text: "o", color: "#bf9e32" },
+                    { text: "w", color: "#aa8c2c" },
+                    { text: "a", color: "#947b27" },
+                    { text: " " },
+                    { text: "w", color: "#6a581c" },
+                    { text: "i", color: "#554616" },
+                    { text: "e", color: "#403511" },
+                    { text: "ś", color: "#2a230b" },
+                    { text: " " },
+                    { text: "4", color: "#000000" },
+                ],
+            },
+        },
+        [-12, 4]
+    ),
+    new MapItem(
+        {
+            name: "Tabliczka",
+            parentID: "sign",
+            customProperties: {
+                display: [{ text: "Nowa wieś 5" }],
+            },
+        },
+        [12, 8]
+    ),
+    new MapItem(
+        {
+            name: "Tabliczka",
+            parentID: "sign",
+            customProperties: {
+                display: [{ text: "Nowa wieś 6" }],
+            },
+        },
+        [12, 19]
+    ),
+
     new MapItem(
         {
             name: "Wejście do domu gracza",
@@ -119,19 +162,27 @@ var itemsOnMap = [
     ),
     new MapItem(
         {
-            name: "Rozmowa z Zygfrydem",
+            name: "Rozmowa z osobą",
             parentID: "interactiveElement",
-            customProperties: { referenceto: "maingame_mechanics/dialogs:dialogSystem.start:zf" },
+            customProperties: { referenceto: "maingame_mechanics/dialogs:dialogSystem.start:zf", forceToDirection: "left" },
         },
         [-11, 5]
     ),
     new MapItem(
         {
-            name: "Rozmowa z Anną",
+            name: "Rozmowa z osobą",
             parentID: "interactiveElement",
-            customProperties: { referenceto: "maingame_mechanics/dialogs:dialogSystem.start:zf" },
+            customProperties: { referenceto: "maingame_mechanics/dialogs:dialogSystem.start:anna", forceToDirection: "right" },
         },
         [11, 20]
+    ),
+    new MapItem(
+        {
+            name: "Rozmowa z osobą",
+            parentID: "interactiveElement",
+            customProperties: { referenceto: "maingame_mechanics/dialogs:dialogSystem.start:og", forceToDirection: "right" },
+        },
+        [11, 10]
     ),
 ]
 

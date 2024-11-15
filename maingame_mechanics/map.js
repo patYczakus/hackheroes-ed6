@@ -50,6 +50,9 @@ const otherImages = {
     home2: new Image(),
     home3: new Image(),
     home4: new Image(),
+    home5: new Image(),
+    home6: new Image(),
+    dodatek: new Image(),
 }
 
 const canvas = document.createElement("canvas")
@@ -280,6 +283,27 @@ async function generateMap() {
         3 * imageScale * scale,
         3 * imageScale * scale
     )
+    context.drawImage(
+        otherImages.home5,
+        (13 - player.x) * imageScale * scale - (imageScale / 2) * scale,
+        (6 - player.y) * imageScale * scale - (imageScale / 2) * scale,
+        2 * imageScale * scale,
+        3 * imageScale * scale
+    )
+    context.drawImage(
+        otherImages.dodatek,
+        (16 - player.x) * imageScale * scale - (imageScale / 2) * scale,
+        (6 - player.y) * imageScale * scale - (imageScale / 2) * scale,
+        2 * imageScale * scale,
+        2 * imageScale * scale
+    )
+    context.drawImage(
+        otherImages.home6,
+        (13 - player.x) * imageScale * scale - (imageScale / 2) * scale,
+        (19 - player.y) * imageScale * scale - (imageScale / 2) * scale,
+        imageScale * scale,
+        2 * imageScale * scale
+    )
 
     //--------------
 
@@ -318,7 +342,7 @@ async function generateMap() {
 
     const findSign = itemsOnMapHandler.get().find((x) => x.cords[0] === player.x && x.cords[1] === player.y && x.parentID == "sign")
     if (findSign) {
-        context.font = "20px monospace"
+        context.font = '20px "Kelly Slab", monospace'
         const textMeasures = context.measureText(findSign.properties.display.map((x) => x.text).join(""))
         context.beginPath()
         context.fillStyle = "white"
@@ -330,7 +354,7 @@ async function generateMap() {
         context.closePath()
         let x = -textMeasures.width / 2
         for (let i = 0; i < findSign.properties.display.length; i++) {
-            context.font = "20px monospace"
+            context.font = '20px "Kelly Slab", monospace'
             context.textAlign = "left"
             context.textBaseline = "middle"
             context.fillStyle = findSign.properties.display[i].color || "black"
@@ -346,7 +370,8 @@ function getItemInfo() {
     if (item) {
         console.log(`[DEBUG] Znaleziono przedmiot o ID ${item.UID}, wyświetlanie informacji...`)
         const box = document.createElement("div")
-        box.style.width = "400px"
+
+        box.style.width = "450px"
         box.style.minHeight = "120px"
         box.style.background = "rgb(0,0,0,0.5)"
         box.style.border = "5px solid rgb(0,0,0,0.75)"
@@ -361,6 +386,8 @@ function getItemInfo() {
                     return otherImages.location
             }
         })()
+        img.display = "block"
+        img.style.marginBottom = "50px"
         img.alt = "ITEM"
         img.width = 100
         img.height = 100
@@ -370,12 +397,12 @@ function getItemInfo() {
         const name = document.createElement("h1")
         name.innerText = item.name
         name.style.float = "left"
-        name.style.width = "280px"
+        name.style.width = "330px"
         const info = document.createElement("span")
         info.innerText = `Typ: ${{ rubbish: "śmieć", sign: "tabliczka", interactiveElement: "interakcja" }[item.parentID]}`
         info.style.clear = "both"
         info.style.fontSize = "15px"
-        info.style.maxWidth = "280px"
+        info.style.maxWidth = "330px"
         box.appendChild(img)
         box.appendChild(name)
         box.appendChild(document.createElement("br"))

@@ -127,18 +127,8 @@ export const rubbishData = [
     //     img: "",
     // },
     // {
-    //     name: "Plastikowa torba",
-    //     type: "sztuczne",
-    //     img: "",
-    // },
-    // {
     //     name: "Słoik po dżemie",
     //     type: "szkło",
-    //     img: "",
-    // },
-    // {
-    //     name: "Plastikowy widelec",
-    //     type: "sztuczne",
     //     img: "",
     // },
     // {
@@ -152,7 +142,7 @@ export const rubbishData = [
     //     img: "imgs/rubbish/",
     // },
     // {
-    //     name: "Stary komputer",
+    //     name: "Kable",
     //     type: "elektro",
     //     img: "imgs/rubbish/",
     // },
