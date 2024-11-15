@@ -121,31 +121,31 @@ export const rubbishData = [
         type: "papier",
         img: "imgs/rubbish/gazeta.png",
     },
-    // {
-    //     name: "Torebka foliowa",
-    //     type: "sztuczne",
-    //     img: "",
-    // },
-    // {
-    //     name: "Słoik po dżemie",
-    //     type: "szkło",
-    //     img: "",
-    // },
-    // {
-    //     name: "Resztki jedzenia",
-    //     type: "bio",
-    //     img: "",
-    // },
-    // {
-    //     name: "Zepsuty telefon",
-    //     type: "elektro",
-    //     img: "imgs/rubbish/",
-    // },
-    // {
-    //     name: "Kable",
-    //     type: "elektro",
-    //     img: "imgs/rubbish/",
-    // },
+    {
+        name: "Torebka foliowa",
+        type: "sztuczne",
+        img: "imgs/rubbish/torebka.png",
+    },
+    {
+        name: "Słoik",
+        type: "szkło",
+        img: "imgs/rubbish/słój.png",
+    },
+    {
+        name: "Resztki jedzenia",
+        type: "bio",
+        img: "imgs/rubbish/resztki.png",
+    },
+    {
+        name: "Zepsuty telefon",
+        type: "elektro",
+        img: "imgs/rubbish/tel.png",
+    },
+    {
+        name: "Kable",
+        type: "elektro",
+        img: "imgs/rubbish/kable.png",
+    },
 ]
 
 export const rubbishCategoryFullname = {
